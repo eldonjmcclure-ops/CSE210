@@ -53,7 +53,7 @@ class Program
 
         else
         {
-            Console.WriteLine("You Didn't Pass.  Better Luck Next Time! ");
+            Console.WriteLine("Better Luck Next Time!");
         }
     }
 }
