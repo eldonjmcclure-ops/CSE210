@@ -7,17 +7,15 @@ class Program
     {
         
         Random randomGenerator = new Random();
-        int magicNumber = randomGenerator.Next(1, 11);
-
-        // Ask for and record a guess
+        int magicNumber = randomGenerator.Next(1, 101);
         
         // Compare the guess and the magic number
-        string loopActive = "true";
-        while (loopActive == "true")
+        int userGuess = -1;
+        while (userGuess != magicNumber)
         {
             Console.Write("What is your guess? ");
             string userValue = Console.ReadLine();
-            int userGuess = int.Parse(userValue);
+            userGuess = int.Parse(userValue);
             if (userGuess < magicNumber)
             {
                 Console.WriteLine("Higher");
@@ -29,7 +27,6 @@ class Program
             else
             {
                 Console.WriteLine("You guessed it right!");
-                loopActive = "false";
             }
         }
 

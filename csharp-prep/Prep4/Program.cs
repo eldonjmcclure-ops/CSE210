@@ -8,16 +8,17 @@ class Program
     {
         //Compute the sum, or total, of the numbers in the list.
         Console.WriteLine("Enter a list of numbers, type 0 when finished.");
-        string userValue;
+        
         List<int> numbers = new();
-        do
+        int number = -1;
+        while (number != 0)
         {
             Console.Write("Enter Number: ");
-            userValue = Console.ReadLine();
-            int number = int.Parse(userValue);
+            string userValue = Console.ReadLine();
+            number = int.Parse(userValue);
             numbers.Add(number);
             
-        } while (userValue != "0");
+        }
         int sum = numbers.Sum();
         Console.WriteLine($"The sum is: {sum}");
 
