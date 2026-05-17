@@ -76,6 +76,7 @@ class Journal
         }
 
     }
+    
 // LoadFromFile, 
     public void LoadFromFile(string filename)
     {
@@ -83,22 +84,16 @@ class Journal
         string[] lines = System.IO.File.ReadAllLines(filename);
         foreach (string line in lines)
         {
-            char firstChar = line[0];
-            if (firstChar == '0')
-            {
                 Entry entry = new Entry();
                 
                 string[] parts = line.Split('|');
-
-                entry._date = parts[0];
-                entry._prompt = parts[1];
-                entry._response = parts[2];
-                _entries.Add(entry);
-            }
-            else if (firstChar == '1')
-            {
                 
-            }
+                entry._date = parts[0];
+                entry._mood = int.Parse(parts[1]);
+                entry._prompt = parts[2];
+                entry._response = parts[3];
+                _entries.Add(entry);
+                Console.WriteLine($"Data from {filename} was successfully loaded.");
         }
             
     }
@@ -109,11 +104,8 @@ class Journal
         {
             foreach (Entry entry in _entries)
             {
-                outputFile.WriteLine($"""{entry._date}|{entry._prompt}|{entry._response}""");
+                outputFile.WriteLine($"""{entry._date}|{entry._mood}|{entry._prompt}|{entry._response}""");
             }
         }
     }
-    // Loops through the _entries list, calling the Display() behavior for each one
-    // behavior Save - Involves writing to a file
-    // behavior Load - involves getting a filename and calling the associated file.
 }

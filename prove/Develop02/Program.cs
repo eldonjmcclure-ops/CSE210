@@ -75,7 +75,7 @@ class Program
                 Console.Write("> ");
                 filename = Console.ReadLine();
                 journal.SaveToFile(filename);
-                Console.WriteLine($"Journal was successfully saved to the file {filename}.");
+                Console.WriteLine($"Journal was successfully saved to {filename}.");
                 Console.WriteLine();
                 
             }
