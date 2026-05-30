@@ -1,0 +1,9 @@
+class Scripture
+{
+    //attributes
+
+
+    //behaviors
+    
+
+}
