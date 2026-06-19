@@ -68,13 +68,8 @@ class Program
                 Console.WriteLine();
                     
                 breathing.StartBreathingActivity();
-                
-                
 
-                // 
-            
             }
-                // 
                 
                 // Use Constructor to create class object
 
