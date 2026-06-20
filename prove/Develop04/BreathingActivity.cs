@@ -50,10 +50,11 @@ class BreathingActivity : Activity
         Congratulate();
         Console.WriteLine($"Well Done!! \n\nYou have completed {GetDuration()} seconds of the {_activityName}.");
     }
+    
     public int StartBreathCycle()
     {
         Console.Write("Breathe in... ");
-        StartCountdown(_inhaleTime);
+        StartCountdown(_exhaleTime);
         Console.WriteLine();
 
         if (_holdBreath > 0)

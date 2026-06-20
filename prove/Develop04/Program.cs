@@ -112,7 +112,7 @@ class Program
                 // Ask for Duration, use setter to set duration
                 do
                 {
-                    Console.Write("How long, in seconds, would you like your session? ");
+                    Console.Write("How long, in seconds, would you like your session to take? ");
                     string input = Console.ReadLine();
                     isValid = int.TryParse(input, out seconds);
                     if (!isValid)
