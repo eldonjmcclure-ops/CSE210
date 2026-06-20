@@ -5,8 +5,7 @@ class Activity
     protected string _activityName;
     protected string _description;
     protected int _duration;
-    protected string _prompt;
-    protected List<string> _promptList;
+    protected string[] _promptList;
 
     // --------
 
@@ -33,20 +32,18 @@ class Activity
     {
         _duration = duration;
     }
-    public string GetPrompt()
+
+    public void SetPromptList(string[] prompts)
     {
-        return _prompt;
-    }
-    public void SetPrompt(string prompt)
-    {
-        _prompt = prompt;
+        _promptList = prompts;
     }
 
-    public string GetRandomPrompt(List<string> promptList)
+    public string GetRandomPrompt(string[] promptList)
     {
         // Get random index of list
-        string prompt = "Random Prompt Placeholder";
-        return prompt;
+        int randomIndex = Random.Shared.Next(promptList.Length);
+        string randomPrompt = promptList[randomIndex];
+        return randomPrompt;
     }
     public void DisplaySpinner(int seconds)
     {
@@ -88,7 +85,7 @@ class Activity
     public void Congratulate()
     {
         string letters = "";
-        string word = "Congratulations!!";
+        string word = "Great Job!";
             Console.Write("--");
             Thread.Sleep(100);
             foreach (char letter in word)
