@@ -19,7 +19,7 @@ class ListingActivity : Activity
     public void StartListingActivity()
     {
         string prompt = GetRandomPrompt(_promptList);
-        Console.WriteLine($"--{prompt}--");
+        Console.WriteLine($"--- {prompt} ---");
         Console.WriteLine("Type as many responses to the prompt as you can before time runs out.");
         DateTime startTime = DateTime.Now;
         DateTime futureTime = startTime.AddSeconds(_duration);
