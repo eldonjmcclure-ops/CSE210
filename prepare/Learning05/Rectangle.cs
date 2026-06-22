@@ -11,8 +11,8 @@ class Rectangle : Shape
     }
     public override double GetArea()
     {
-        double area = _length * _width;
-        return area;
+        
+        return _length * _width;
     }
     
 }

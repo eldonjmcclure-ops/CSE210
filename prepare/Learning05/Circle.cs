@@ -8,7 +8,7 @@ class Circle :Shape
     }
     public override double GetArea()
     {
-        double area = 3.14 * (_radius * _radius);
-        return area;
+        
+        return 3.14 * (_radius * _radius);
     }
 }
