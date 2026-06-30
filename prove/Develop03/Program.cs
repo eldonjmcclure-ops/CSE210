@@ -24,7 +24,7 @@ class Program
         string book = splitRef[0];
         int chapter = int.Parse(splitRef[1]);
         int startVerse = int.Parse(splitRef[2]);
-Reference reference;
+        Reference reference;
         if (splitRef.Length == 4)
         {
             int endVerse = int.Parse(splitRef[3]);
