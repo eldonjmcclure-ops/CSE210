@@ -3,7 +3,7 @@ class EternalGoal : Goal
     int _total;
     public EternalGoal(string name, string description, int points) : base(name, description, points)
     {
-        
+        _total = 0;
     }
 
     public EternalGoal(string name, string description, int points, int total) : base(name, description, points)
@@ -21,7 +21,7 @@ class EternalGoal : Goal
 
 	public override string GetSaveString()
     {
-        string saveString = $"EternalGoal:{_name}|{_description}|{_points}";
+        string saveString = $"EternalGoal:{_name}|{_description}|{_points}|{_total}";
         return saveString;
     }
 

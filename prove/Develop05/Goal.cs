@@ -136,7 +136,9 @@ abstract class Goal
                             int bonusPoints = int.Parse(pieces[3]);
                             int bonusRequirement = int.Parse(pieces[4]);
                             int timesCompleted = int.Parse(pieces[5]);
-                            ChecklistGoal checklistGoal = new ChecklistGoal(name, description, points, bonusPoints, bonusRequirement, timesCompleted);
+                            bool isCompleted = bool.Parse(pieces[6]);
+                            int total = int.Parse(pieces[7]);
+                            ChecklistGoal checklistGoal = new ChecklistGoal(name, description, points, bonusPoints, bonusRequirement, timesCompleted, isCompleted, total);
                             recordedGoals.Add(checklistGoal);
                         }
 
@@ -147,7 +149,7 @@ abstract class Goal
                             string description = pieces[1];
                             int points = int.Parse(pieces[2]);
                             int total = int.Parse(pieces[3]);
-                            EternalGoal eternalGoal = new EternalGoal(name, description, points);
+                            EternalGoal eternalGoal = new EternalGoal(name, description, points, total);
                             recordedGoals.Add(eternalGoal);
                         }
                     }

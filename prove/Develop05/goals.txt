@@ -1,3 +1,2 @@
+ChecklistGoal:check|list|10|50|5|5|True|100
 SimpleGoal:sim|ple|10|True
-ChecklistGoal:check|list|210|200|5|5
-EternalGoal:eter|nal|10|4
