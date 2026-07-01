@@ -201,27 +201,12 @@ class Program
             {   
 
                 recordedGoals = Goal.LoadGoalsFromFile();
+                totalPoints = 0;
                 // Add up points so they have their saved total back
                 foreach (Goal goal in recordedGoals)
                 {
-                    if (goal is SimpleGoal)
-                    {
-                        if (goal.GetCompletion())
-                        {
-                            totalPoints += goal.GetPoints();
-                        }
-                    }
                     
-                    if (goal is ChecklistGoal )
-                    {
-                        if (goal.GetTimesCompleted() > 0)
-                        {
-                            
-                            
-                        }
-                        
-                    }
-
+                    totalPoints += goal.GetPointTotal();
 
                 }
             }
@@ -233,16 +218,15 @@ class Program
                 List<Goal> uncompletedGoals = new List<Goal>();
                 if (recordedGoals.Count() != 0)
                 {
-                    for (int index = 0; index < recordedGoals.Count(); index++)
+                    foreach (Goal goal in recordedGoals)
                     {
                         
-                        bool completed = recordedGoals[index].GetCompletion();
-                        if (!completed)
+                        if (!goal.GetCompletion())
                         {
-                            uncompletedGoals.Add(recordedGoals[index]);
-                            string name = uncompletedGoals[index].GetName();
-                            Console.WriteLine($"{index + 1}. {name}");
+                            uncompletedGoals.Add(goal);
+                            Console.WriteLine($"{uncompletedGoals.Count()}. {goal.GetName()}");
                         }
+
                     }
                     if (uncompletedGoals.Count() != 0)
                     {

@@ -1,8 +1,14 @@
 class EternalGoal : Goal
 {
+    int _total;
     public EternalGoal(string name, string description, int points) : base(name, description, points)
     {
         
+    }
+
+    public EternalGoal(string name, string description, int points, int total) : base(name, description, points)
+    {
+        _total = total;
     }
 	
 
@@ -15,7 +21,7 @@ class EternalGoal : Goal
 
 	public override string GetSaveString()
     {
-        string saveString = $"EternalGoal:{_name}|{_description}|{_points}|{_timesCompleted}";
+        string saveString = $"EternalGoal:{_name}|{_description}|{_points}";
         return saveString;
     }
 
@@ -23,14 +29,14 @@ class EternalGoal : Goal
     {
         Console.WriteLine("Congratulations!  You completed your goal!");
         Console.WriteLine($"You earned {_points} points!");
-        _timesCompleted += 1;
+        _total += _points;
 
         return _points;
     }
 
     public override int GetPointTotal()
     {
-        throw new NotImplementedException();
+        return _total;
     }
 
 }

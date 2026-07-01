@@ -10,7 +10,6 @@ abstract class Goal
 
 	protected bool _isCompleted;
 
-    protected int _timesCompleted = 0;
 	
 	
  	public Goal(string name, string description, int points, bool isCompleted = false)
@@ -20,11 +19,6 @@ abstract class Goal
         _points = points;
         _isCompleted = isCompleted;
     } 
-
-    public int GetTimesCompleted()
-    {
-        return _timesCompleted;
-    }
 
     public abstract int GetPointTotal();
 
@@ -152,7 +146,7 @@ abstract class Goal
                             string name = pieces[0];
                             string description = pieces[1];
                             int points = int.Parse(pieces[2]);
-                            int timesCompleted = int.Parse(pieces[3]);
+                            int total = int.Parse(pieces[3]);
                             EternalGoal eternalGoal = new EternalGoal(name, description, points);
                             recordedGoals.Add(eternalGoal);
                         }

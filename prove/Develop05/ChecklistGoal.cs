@@ -2,6 +2,7 @@ class ChecklistGoal : Goal
 {
     private int _bonusRequirement;
     private int _bonusPoints;
+    private int _timesCompleted;
 	
 
 	public ChecklistGoal(string name, string description, int points, int bonusRequirement, int bonusPoints) : base(name, description, points)
@@ -41,7 +42,7 @@ class ChecklistGoal : Goal
 	public override void Display(int index)
     {
         
-        if (_isCompleted)
+        if (_timesCompleted == _bonusRequirement)
         {
             Console.WriteLine($"{index + 1}. [X] {_name} ({_description}) -- Currently Completed: {_timesCompleted}/{_bonusRequirement}");    
         }
@@ -81,17 +82,7 @@ class ChecklistGoal : Goal
     public override int GetPointTotal()
     {
         
-        if (!_isCompleted)
-        {
-            int totalPoints = 0;
-            totalPoints += _points * _timesCompleted;
-            return totalPoints;
-        }
-        else
-        {
-            int totalPoints = 0;
-            totalPoints += _points * _bonusRequirement + _bonusPoints;
-            return totalPoints;
-        }
+        return _points;
+
     }
 }
