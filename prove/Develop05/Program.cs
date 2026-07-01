@@ -6,39 +6,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        // PseudoCode Start
-
-        // Start Program
-        // Display Menu
-        // 1. Create New Goal
-            // Choose Goal Type
-            // 1. Simple
-                // Name
-                // Description
-                // Points
-            // 2. Checklist
-                // Name
-                // Description
-                // Points
-                // Bonus Requirement
-                // Bonus Points
-            // 3. Eternal
-                // Name
-                // Description
-                // Points
-        // 2. List Goals
-            // Goals must be stored in an array
-            // Use overridden Display() methods
-        // 3. Save Goals
-            // Save in the following format: 
-                // SimpleGoal:Name,Description,Points,CompletionStatus
-                // ChecklistGoal:Name|Description|Points|BonusPoints|TimesRequired|TimesCompleted
-        // 4. Load Goals
-        // 5. Record Event
-            // Display all goals in a numbered list
-            // Ask which Goal was completed
-            // Update that Goal with the CompleteGoal method  
-        // 6. Quit
         
         //Start Loop
         bool running = true;
@@ -49,7 +16,7 @@ class Program
         while (running)
         {
             
-
+            // Initial Menu
             Console.WriteLine($"You have {totalPoints} points.\n");
 
             Console.WriteLine("""
@@ -63,6 +30,8 @@ class Program
             """);
             do
             {
+                // Choose Option
+
                 Console.Write("Select a choice from the menu: ");
                 string input = Console.ReadLine();
                 isValid = int.TryParse(input, out choice);
@@ -105,10 +74,7 @@ class Program
                     
                 } while (goalType > 3 || goalType < 1 || !isValid);
                 
-                // 1. Simple
-                // Name
-                // Description
-                // Points
+                // 1. Simple Goal
 
                 if (goalType == 1)
                 {
@@ -127,12 +93,7 @@ class Program
                     Console.WriteLine();
                 }
 
-                // 2. Checklist
-                // Name
-                // Description
-                // Points
-                // Bonus Requirement
-                // Bonus Points
+                // 2. Checklist Goal
 
                 else if (goalType == 2)
                 {
@@ -157,10 +118,7 @@ class Program
                     Console.WriteLine();
                 }
                 
-            // 3. Eternal
-                // Name
-                // Description
-                // Points
+            // 3. Eternal Goal
 
                 else if (goalType == 3)
                 {
@@ -210,6 +168,8 @@ class Program
 
                 }
             }
+
+            
             // Record Event
 
             else if (choice == 5)
