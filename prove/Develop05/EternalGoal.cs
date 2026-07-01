@@ -1,6 +1,6 @@
 class EternalGoal : Goal
 {
-    int _total;
+    private int _total;
     public EternalGoal(string name, string description, int points) : base(name, description, points)
     {
         _total = 0;

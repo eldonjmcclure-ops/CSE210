@@ -13,11 +13,31 @@ class Program
         bool isValid;
         int totalPoints = 0;
         List<Goal> recordedGoals = new List<Goal>();
+        List<int> thresholds = new List<int>() {50,110,180,260,350,450,565,695,840,1000,1175,1365,1575,
+    1805,2055,2325,2615,2930,3270,3635,4025,4445,4895,5375,5885,6430,7010,7625,8275,8965,9695,10465,11275,
+    12130,13030,13975,14970,16015,17110,18260,19465,20730,22055,23445,24900,26425,28020,29690,31440,33270,
+    35185,37190,39290,41490,43795,46210,48740,51390,54165,57070,60110,63290,66615,70090,73720,77510,81465,
+    85590,89890,94370,99035,103890,108940,114190,119645,125310,131190,137290,143615,150170,156960,163990,
+    171265,178790,186570,194610,202915,211490,220340,229470,238885,248590,258590,268890,279495,290410,
+    301640,313190};
+
+        Level levelManager = new Level(1, 99, thresholds);
+
+        int oldLevel = levelManager.GetMinLevel();
         while (running)
         {
             
             // Initial Menu
             Console.WriteLine($"You have {totalPoints} points.\n");
+            
+            int currentLevel = levelManager.CheckLevel(totalPoints);
+            if (currentLevel > levelManager.GetCurrentLevel())
+            {
+                levelManager.SetCurrentLevel(currentLevel);
+                levelManager.LevelUpAnimation();
+            }
+            Console.WriteLine($"Level {currentLevel}");
+
 
             Console.WriteLine("""
             Menu Options:
@@ -83,9 +103,25 @@ class Program
                     
                     Console.Write("Give a description of your goal. ");
                     string simpleDesc = Console.ReadLine();
+                    
+                    int simplePoints;
+                    do
+                    {
+                        Console.Write("How many points is this goal worth? Max 50: ");
+                        string input = Console.ReadLine();
+                        isValid = int.TryParse(input, out simplePoints);
+                        if (!isValid)
+                            {
+                                Console.WriteLine("Invalid input: Enter a number between 1 and 50.");
+                            }
+                        else if (simplePoints > 50 || simplePoints < 1)
+                        {
+                            Console.WriteLine("Invalid Input: Enter a number between 1 and 50.");
+                        } 
+                    
+                    } while (simplePoints > 50 || simplePoints < 1 || !isValid);
 
-                    Console.Write("How many points is this goal worth? ");
-                    int simplePoints = int.Parse(Console.ReadLine());
+                    
                     
                     SimpleGoal simpleGoal = new SimpleGoal(simpleName, simpleDesc, simplePoints);
 
@@ -97,20 +133,51 @@ class Program
 
                 else if (goalType == 2)
                 {
+
+                    
                     Console.Write("What is the name of your goal? ");
                     string checklistName = Console.ReadLine();
                     
                     Console.Write("Give a description of your goal. ");
                     string checklistDesc = Console.ReadLine();
 
-                    Console.Write("How many points is this goal worth? ");
-                    int checklistPoints = int.Parse(Console.ReadLine());
+                    int checklistPoints;
+                    do
+                    {
+                        Console.Write("How many points is this goal worth? Be reasonable about it. Max 30: ");
+                        string input = Console.ReadLine();
+                        isValid = int.TryParse(input, out checklistPoints);
+                        if (!isValid)
+                            {
+                                Console.WriteLine("Invalid input: Enter a number between 1 and 30.");
+                            }
+                        else if (checklistPoints > 30 || checklistPoints < 1)
+                        {
+                            Console.WriteLine("Invalid Input: Enter a number between 1 and 30.");
+                        } 
+                    
+                    } while (checklistPoints > 30 || checklistPoints < 1 || !isValid);
+                    
 
                     Console.Write("How many times does this goal need to be completed to earn bonus points? ");
                     int bonusRequirement = int.Parse(Console.ReadLine());
+
+                    int bonusPoints;
+                    do
+                    {
+                        Console.Write("How many points should be awarded as bonus points? Be reasonable about it. Max 200: ");
+                        string input = Console.ReadLine();
+                        isValid = int.TryParse(input, out bonusPoints);
+                        if (!isValid)
+                            {
+                                Console.WriteLine("Invalid input: Enter a number between 1 and 200.");
+                            }
+                        else if (bonusPoints > 200 || bonusPoints < 1)
+                        {
+                            Console.WriteLine("Invalid Input: Enter a number between 1 and 500.");
+                        } 
                     
-                    Console.Write("How many points should be awarded as bonus points? ");
-                    int bonusPoints = int.Parse(Console.ReadLine());
+                    } while (bonusPoints > 200 || bonusPoints < 1 || !isValid);
 
                     ChecklistGoal checklistGoal =  new ChecklistGoal(checklistName, checklistDesc, checklistPoints, bonusRequirement, bonusPoints);
                     
@@ -128,8 +195,22 @@ class Program
                     Console.Write("Give a description of your goal. ");
                     string eternalDesc = Console.ReadLine();
 
-                    Console.Write("How many points is this goal worth? ");
-                    int eternalPoints = int.Parse(Console.ReadLine());
+                    int eternalPoints;
+                    do
+                    {
+                        Console.Write("How many points is this goal worth? Be reasonable about it. Max 50: ");
+                        string input = Console.ReadLine();
+                        isValid = int.TryParse(input, out eternalPoints);
+                        if (!isValid)
+                            {
+                                Console.WriteLine("Invalid input: Enter a number between 1 and 50.");
+                            }
+                        else if (eternalPoints > 50 || eternalPoints < 1)
+                        {
+                            Console.WriteLine("Invalid Input: Enter a number between 1 and 50.");
+                        } 
+                    
+                    } while (eternalPoints > 50 || eternalPoints < 1 || !isValid);
                     
                     EternalGoal eternalGoal = new EternalGoal(eternalName, eternalDesc, eternalPoints);
 
@@ -169,7 +250,7 @@ class Program
                 }
             }
 
-            
+
             // Record Event
 
             else if (choice == 5)

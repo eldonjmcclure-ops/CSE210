@@ -99,10 +99,6 @@ class Activity
         Console.WriteLine();
         Console.WriteLine();
             
-
-
-
-
     }
     
 
