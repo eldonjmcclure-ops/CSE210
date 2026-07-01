@@ -1,2 +1,2 @@
-ChecklistGoal:check|list|10|50|5|5|True|100
-SimpleGoal:sim|ple|10|True
+SimpleGoal:sim|ple|35|True
+SimpleGoal:sim2|ple2|40|True
