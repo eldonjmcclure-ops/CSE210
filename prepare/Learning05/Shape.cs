@@ -19,7 +19,7 @@ class Shape
     }
     public virtual double GetArea()
     {
-        float area = 0;
+        double area = 0;
         return area;
     }
 }
