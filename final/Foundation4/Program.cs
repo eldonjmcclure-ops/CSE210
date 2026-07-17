@@ -11,7 +11,8 @@ class Program
         List<Activity> activities = new List<Activity>(){running, cycling, swimming};
         foreach (Activity activity in activities)
         {
-            activity.DisplaySummary();
+            Console.WriteLine(activity.DisplaySummary());
+            Console.WriteLine();
         }
     }
 }

@@ -43,13 +43,13 @@ class Activity
     {
         return 0;
     }
-	public void DisplaySummary()
+	public string DisplaySummary()
     {
         double distance = Math.Round(GetDistance(),1);
         double speed = Math.Round(GetSpeed(),1);
         double pace = Math.Round(GetPace(),1);
 
-        Console.WriteLine($"{GetDateOnly()} {_activityType} ({_lengthMinutes} min)- Distance: {distance} miles, Speed {speed} mph, Pace: {pace} min per mile");
+        return $"{GetDateOnly()} {_activityType} ({_lengthMinutes} min)- Distance: {distance} miles, Speed: {speed} mph, Pace: {pace} min per mile";
     }
 
 }
