@@ -1,12 +1,12 @@
-class Cycling
+class Cycling : Activity
 {
-    private int _mph;
+    private double _mph;
 
-	public Cycling(int mph)
+	public Cycling(int mph, DateTime date, int lengthMinutes, string activityType) : base(date, lengthMinutes, activityType)
     {
         _mph = mph;
     }
-	public int GetSpeed()
+	public override double GetSpeed()
     {
         return _mph;
     }
@@ -14,8 +14,13 @@ class Cycling
     {
         _mph = mph;
     }
-	public override string GetSummary()
+    public override double GetPace()
     {
-        
+        return _lengthMinutes / GetDistance();
     }
+    public override double GetDistance()
+    {
+        return _lengthMinutes / 60.0 * GetSpeed();
+    }
+	
 }

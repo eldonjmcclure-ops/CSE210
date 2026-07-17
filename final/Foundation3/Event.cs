@@ -14,14 +14,6 @@ class Event
         _dateTime = dateTime;
         _address = address;
     }
-    public string GetType()
-    {
-        return _eventType;
-    }
-	public void SetType(string eventType) 
-    {
-        _eventType = eventType;
-    }
 	public string GetTitle() 
     {
         return _title;

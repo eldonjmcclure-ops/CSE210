@@ -2,11 +2,11 @@ class Running : Activity
 {
     private double _distance;
 
-    public Running (double distance, DateTime date, int lengthMinutes) : base(date, lengthMinutes)
+    public Running (double distance, DateTime date, int lengthMinutes, string activityType) : base(date, lengthMinutes, activityType)
     {
-        
+        _distance = distance;
     }
-    public double GetDistance()
+    public override double GetDistance()
     {
         return _distance;
     }
@@ -14,9 +14,12 @@ class Running : Activity
     {
         _distance = distance;
     }
-    public override string GetSummary()
+    public override double GetSpeed()
     {
-         
+        return _distance / _lengthMinutes * 60;
+    }
+    public override double GetPace()
+    {
+        return _lengthMinutes / _distance;
     }
 }
-	

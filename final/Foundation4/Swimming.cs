@@ -1,8 +1,10 @@
-class Swimming
+using System.Net.NetworkInformation;
+
+class Swimming : Activity
 {
     private int _laps;
 	
-	public Swimming(int laps)
+	public Swimming(int laps, DateTime date, int lengthMinutes, string activityType) : base(date, lengthMinutes, activityType)
     {
         _laps = laps;
     }
@@ -14,13 +16,16 @@ class Swimming
     {
         _laps = laps;
     }
-	public double GetPace()
+    public override double GetSpeed()
     {
-        
+        return GetDistance() / _lengthMinutes * 60;
     }
-	public override string GetSummary()
+    public override double GetPace()
     {
-        
+        return _lengthMinutes / GetDistance();
+    }
+    public override double GetDistance()
+    {
+        return _laps * 50.0 / 1000.0 * 0.62;
     }
 }
-	
